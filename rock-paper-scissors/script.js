@@ -26,6 +26,7 @@ function playRound(playerSelection, computerSelection) {
     computerScore + 1;
     result = "You lose!";
   }
+  return result;
 }
 
 const playerSelection = "rock";
