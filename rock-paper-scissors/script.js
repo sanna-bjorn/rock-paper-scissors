@@ -1,7 +1,6 @@
 const choices = ["rock", "paper", "scissors"];
-const playerScore = 0;
-const computerScore = 0;
-const inputs = document.querySelectorAll("input");
+let playerScore = 0;
+let computerScore = 0;
 
 {
   /* // function that randomly returns Rock, Paper or Sciccors. This is the computer playing. */
@@ -12,31 +11,29 @@ function getComputerChoice() {
   return randomElement;
 }
 
+//* collect input and set it to lowercase letters
+let playerSelection = prompt("Input your choice");
+let computerSelection = getComputerChoice();
+let result;
+
+//create playRound function with parameters for playerSelection and computerSelection
 function playRound(playerSelection, computerSelection) {
-  if (
+  if (playerSelection === computerSelection) {
+    result = "It's a tie";
+  } else if (
     (playerSelection == "rock" && computerSelection == "scissors") ||
     (playerSelection == "scissors" && computerSelection == "paper") ||
     (playerSelection == "paper" && computerSelection == "rock")
   ) {
-    playerScore + 1;
     result = "You win!";
-  } else if (playerSelection === computerSelection) {
-    result = "It's a tie";
   } else {
-    computerScore + 1;
     result = "You lose!";
   }
   return result;
 }
 
-const playerSelection = "rock";
-
-const computerSelection = getComputerChoice();
-
 console.log(playRound(playerSelection, computerSelection));
 
-// inputs.forEach((input) => {
-//   input.addEventListener("click", function () {
-//     playRound(input.value);
-//   });
-// });
+// for (let i = 0; i < 5; i++) {
+//   playRound();
+// }
