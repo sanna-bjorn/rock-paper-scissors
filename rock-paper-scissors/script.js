@@ -31,9 +31,18 @@ function playRound(playerSelection, computerSelection) {
   }
   return result;
 }
-
 console.log(playRound(playerSelection, computerSelection));
 
-// for (let i = 0; i < 5; i++) {
-//   playRound();
-// }
+function game() {
+  for (let i = 0; i < 5; i++) {
+    if (result == "You win!") {
+      playerScore++;
+    } else if (result == "You lose!") {
+      computerScore++;
+    }
+    console.log("Score: " + playerScore + " Computer: " + computerScore);
+  }
+  return playRound();
+}
+
+game(computerScore, playerScore);
