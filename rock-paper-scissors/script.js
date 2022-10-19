@@ -12,9 +12,6 @@ function getComputerChoice() {
 }
 
 //* collect input and set it to lowercase letters
-let playerSelection = prompt("Input your choice");
-let computerSelection = getComputerChoice();
-let result;
 
 //create playRound function with parameters for playerSelection and computerSelection
 function playRound(playerSelection, computerSelection) {
@@ -31,18 +28,26 @@ function playRound(playerSelection, computerSelection) {
   }
   return result;
 }
-console.log(playRound(playerSelection, computerSelection));
 
 function game() {
   for (let i = 0; i < 5; i++) {
+    let playerSelection = prompt("Input your choice");
+    playerSelection = playerSelection.toLowerCase();
+    let computerSelection = getComputerChoice();
+    let result = playRound(playerSelection, computerSelection);
     if (result == "You win!") {
       playerScore++;
     } else if (result == "You lose!") {
       computerScore++;
     }
+    console.log(playRound(playerSelection, computerSelection));
     console.log("Score: " + playerScore + " Computer: " + computerScore);
   }
-  return playRound();
+  if (playerScore > computerScore) {
+    console.log("Player wins!");
+  } else if (playerScore < computerScore) {
+    console.log("Computer wins!");
+  }
 }
 
-game(computerScore, playerScore);
+game();
