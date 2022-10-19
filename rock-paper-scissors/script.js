@@ -10,10 +10,7 @@ function getComputerChoice() {
   console.log(randomElement);
   return randomElement;
 }
-
-//* collect input and set it to lowercase letters
-
-//create playRound function with parameters for playerSelection and computerSelection
+//create playRound function with parameters for playerSelection and computerSelection to check which result wins
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     result = "It's a tie";
@@ -29,6 +26,7 @@ function playRound(playerSelection, computerSelection) {
   return result;
 }
 
+//function for game that loops through five times and checks result from playRound every time, and updates the score. After five times, prints out the winner of the round.
 function game() {
   for (let i = 0; i < 5; i++) {
     let playerSelection = prompt("Input your choice");
