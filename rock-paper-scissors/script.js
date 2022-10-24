@@ -45,12 +45,12 @@ addButtonListener();
 // playRound function to check which result wins and to update score
 // modify playRound to update score instead of result.
 
-//scores are global variables already. update playround to stop when score = 5. a
+//scores are global variables already. update playround to stop when score = 5. print result to content div and announce winner once score hits 5.
 
-//dd if statement to check for score, and change console.logs to DOM methods.
+//add if statement to check for score, and change console.logs to DOM methods.
 
 function playRound(playerSelection, computerSelection) {
-  if (playerScore <= 5 && computerScore <= 5) {
+  while (playerScore <= 4 && computerScore <= 4) {
     if (playerSelection === computerSelection) {
       result = "It's a tie";
     } else if (
@@ -60,20 +60,22 @@ function playRound(playerSelection, computerSelection) {
     ) {
       result = "You win!";
       playerScore += 1;
-      console.log("Playerscore is ", playerScore);
+      console.log("Player score is ", playerScore);
     } else {
       result = "You lose!";
       computerScore += 1;
-      console.log("Computerscore is ", computerScore);
+      console.log("Computer score is ", computerScore);
     }
+    if (playerScore > computerScore) {
+      console.log("Player wins the round!");
+    } else if (playerScore < computerScore) {
+      console.log("Computer wins the round!");
+    }
+    console.log(
+      "Player score: " + playerScore + " Computer score: " + computerScore
+    );
     return result;
   }
-  return console.log("Score: " + playerScore + " Computer: " + computerScore);
-}
-if (playerScore > computerScore) {
-  console.log("Player wins!");
-} else if (playerScore < computerScore) {
-  console.log("Computer wins!");
 }
 
 //function for game that loops through five times and checks result from playRound every time, and updates the score. After five times, prints out the winner of the round.
