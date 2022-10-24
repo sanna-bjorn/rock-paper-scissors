@@ -1,11 +1,13 @@
 const choices = ["rock", "paper", "scissors"];
-let playerScore = 0;
-let computerScore = 0;
+let playerScore = document.querySelector("#playerScore");
+playerScore = 0;
+let computerScore = document.querySelector("#computerScore");
+computerScore = 0;
 const container = document.querySelector("#container");
-const content = document.createElement("div");
+let content = document.createElement("div");
 content.classList.add("content");
+const roundResults = document.querySelector("#roundResults");
 container.appendChild(content);
-content.textContent = playRound();
 
 // function that randomly returns Rock, Paper or Sciccors. /
 
@@ -50,31 +52,28 @@ addButtonListener();
 //add if statement to check for score, and change console.logs to DOM methods.
 
 function playRound(playerSelection, computerSelection) {
-  while (playerScore <= 4 && computerScore <= 4) {
+  if (playerScore <= 4 && computerScore <= 4) {
+    content.textContent =
+      "Player's score: " + playerScore + " Computer's score: " + computerScore;
     if (playerSelection === computerSelection) {
-      result = "It's a tie";
+      roundResults.textContent = "Tie!";
     } else if (
       (playerSelection == "rock" && computerSelection == "scissors") ||
       (playerSelection == "scissors" && computerSelection == "paper") ||
       (playerSelection == "paper" && computerSelection == "rock")
     ) {
-      result = "You win!";
+      roundResults.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
       playerScore += 1;
-      console.log("Player score is ", playerScore);
     } else {
-      result = "You lose!";
       computerScore += 1;
-      console.log("Computer score is ", computerScore);
+      roundResults.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
     }
-    if (playerScore > computerScore) {
-      console.log("Player wins the round!");
-    } else if (playerScore < computerScore) {
-      console.log("Computer wins the round!");
-    }
-    console.log(
-      "Player score: " + playerScore + " Computer score: " + computerScore
-    );
-    return result;
+    return;
+  }
+  if (playerScore > computerScore) {
+    roundResults.textContent = `Player wins thegame `;
+  } else if (playerScore < computerScore) {
+    roundResults.textContent = `Computer wins the game`;
   }
 }
 
