@@ -53,8 +53,6 @@ addButtonListener();
 
 function playRound(playerSelection, computerSelection) {
   if (playerScore <= 4 && computerScore <= 4) {
-    content.textContent =
-      "Player's score: " + playerScore + " Computer's score: " + computerScore;
     if (playerSelection === computerSelection) {
       roundResults.textContent = "Tie!";
     } else if (
@@ -68,34 +66,15 @@ function playRound(playerSelection, computerSelection) {
       computerScore += 1;
       roundResults.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
     }
+    content.textContent =
+      "Player's score: " + playerScore + " Computer's score: " + computerScore;
     return;
   }
   if (playerScore > computerScore) {
-    roundResults.textContent = `Player wins thegame `;
+    roundResults.textContent = `Player wins the game`;
   } else if (playerScore < computerScore) {
     roundResults.textContent = `Computer wins the game`;
   }
 }
 
 //function for game that loops through five times and checks result from playRound every time, and updates the score. After five times, prints out the winner of the round.
-
-// // function game() {
-//   // for (let i = 0; i < 5; i++) {
-//   let playerSelection;
-//   let computerSelection = getComputerChoice();
-//   let result = playRound(playerSelection, computerSelection);
-//   if (result == "You win!") {
-//     playerScore++;
-//   } else if (result == "You lose!") {
-//     computerScore++;
-//   }
-//   console.log(playRound(playerSelection, computerSelection));
-//   console.log("Score: " + playerScore + " Computer: " + computerScore);
-// }
-// if (playerScore > computerScore) {
-//   console.log("Player wins!");
-// } else if (playerScore < computerScore) {
-//   console.log("Computer wins!");
-// }
-
-// game();
